@@ -35,6 +35,7 @@ group :test do
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
   gem "shoulda-matchers", "~> 4.5"
+  gem "rails-controller-testing", "~> 1.0"
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
