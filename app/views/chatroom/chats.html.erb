@@ -1,7 +1,7 @@
 <div class="container py-5 px-4">
   <div class="row rounded-lg overflow-hidden shadow">
 
-    <%# CHATS %>
+    <%# CONVERSATION %>
     <div class="col-5 px-0">
       <div class="bg-white">
 
@@ -12,9 +12,9 @@
         <div class="messages-box">
           <div class="list-group rounded-0">
           
-            <%= render 'components/chat_active' %>
+            <%= render 'components/conversation_active' %>
 
-            <%= render 'components/chat_inactive' %>
+            <%= render 'components/conversation_inactive' %>
 
           </div>
         </div>
@@ -25,12 +25,12 @@
     <div class="col-7 px-0">
       <div class="px-4 py-5 chat-box bg-white">
 
-        <%= render 'components/convo_sender' %>
-        <%= render 'components/convo_sender' %>
-        <%= render 'components/convo_receiver' %>
-        <%= render 'components/convo_sender' %>
-        <%= render 'components/convo_sender' %>
-        <%= render 'components/convo_receiver' %>
+        <%= render 'components/message_sender' %>
+        <%= render 'components/message_sender' %>
+        <%= render 'components/message_receiver' %>
+        <%= render 'components/message_sender' %>
+        <%= render 'components/message_sender' %>
+        <%= render 'components/message_receiver' %>
 
       </div>
 
