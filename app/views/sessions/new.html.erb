@@ -1,1 +1,5 @@
-<h1>Login Form Here</h1>
+<%= form_with scope: :user, url: session_create_path, method: :post do |form| %>
+  <%= form.text_field :username, placeholder: 'Username' %>
+  <%= form.password_field :password, placeholder: 'Password' %>
+  <%= form.submit 'Signin' %>
+<% end %>
