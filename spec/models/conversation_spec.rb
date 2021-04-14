@@ -44,5 +44,6 @@ RSpec.describe Conversation, type: :model do
   describe 'associations' do
     it { is_expected.to belong_to(:user_one) }
     it { is_expected.to belong_to(:user_two) }
+    it { is_expected.to have_many(:messages) }
   end
 end
