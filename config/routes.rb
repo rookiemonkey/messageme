@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  # ROOM
+  root to: 'chatroom#chats'
+
   # SIGN IN
   get '/signin', to: 'sessions#new', as: 'session_new'
   post '/signin', to: 'sessions#create', as: 'session_create'
