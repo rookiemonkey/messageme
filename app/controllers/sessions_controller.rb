@@ -3,14 +3,14 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by(username: account_params[:username])
-    return unless user&.authenticate(account_params[:password])
+    raise AccountError.new(message: 'Incorrect username and password', path: session_new_path) unless user&.authenticate(account_params[:password])
 
     session[:user_id] = user.id
-    flash[:notice] = 'Logged in successfully'
+    respond_success('Logged in successfully', root_path)
   end
 
   def destroy
     session[:user_id] = nil
-    flash[:notice] = 'Logged out successfully'
+    respond_success('Logged out successfully', session_new_path)
   end
 end

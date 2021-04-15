@@ -34,7 +34,7 @@ RSpec.describe 'Sessions', type: :request do
     end
 
     it 'returns http success' do
-      expect(response).to have_http_status(:success)
+      expect(response).to redirect_to(session_new_path)
     end
 
     it 'returns destroys user session' do

@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe 'Chatrooms', type: :request do
+  let(:user) { create(:user) }
+
+  before { login(user) }
+
   describe 'GET /' do
     before { get root_path }
 

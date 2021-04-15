@@ -17,7 +17,7 @@ RSpec.describe 'Registrations', type: :request do
     before { post registration_create_path, params: { user: attributes_for(:user) } }
 
     it 'returns http success' do
-      expect(response).to have_http_status(:success)
+      expect(response).to redirect_to(root_path)
     end
 
     it 'creates user resource' do
