@@ -28,6 +28,9 @@ Layout/EndOfLine:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
+Style/RedundantSelf:
+  Enabled: false
+
 Metrics/BlockLength:
   Exclude:
     - "config/**/*"
