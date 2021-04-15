@@ -14,5 +14,6 @@ Rails.application.routes.draw do
 
   # CHAT
   get '/:other_user_id', to: 'chatroom#chat', as: 'chat'
+  post '/:other_user_id', to: 'chatroom#message', as: 'message'
   
 end
