@@ -25,7 +25,14 @@
     <div class="col-7 px-0">
       <div class="px-4 py-5 chat-box bg-white">
 
-        <h2>Please select a conversation to view</h2>
+        <% @messages.each do |message| %>
+          <% if message.user_id == current_user.id %>
+            <%= render 'components/message_receiver', message: message %>
+            <% next %>
+          <% end %>
+
+          <%= render 'components/message_sender', message: message %>
+        <% end %>
 
       </div>
 

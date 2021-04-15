@@ -12,4 +12,7 @@ Rails.application.routes.draw do
   get '/signup', to: 'registrations#new', as: 'registration_new'
   post '/signup', to: 'registrations#create', as: 'registration_create'
 
+  # CHAT
+  get '/:other_user_id', to: 'chatroom#chat', as: 'chat'
+  
 end
