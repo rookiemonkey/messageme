@@ -15,10 +15,14 @@ class ChatroomController < ApplicationController
   def message
     existing_conversation = current_user.existing_conversation_with(params[:other_user_id])
 
-    return existing_conversation.messages.create(body: params[:message], user: current_user) if existing_conversation
+    if existing_conversation
+      existing_conversation.messages.create(body: params[:message], user: current_user)
+    else
+      new_conversation = Conversation.create(user_one_id: current_user.id, user_two_id: params[:other_user_id])
+      new_conversation.messages.create(body: params[:message], user: current_user)
+    end
 
-    new_conversation = Conversation.create(user_one_id: current_user.id, user_two_id: params[:other_user_id])
-    new_conversation.messages.create(body: params[:message], user: current_user)
+    redirect_to chat_path(params[:other_user_id])
   end
 
   private

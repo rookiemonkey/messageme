@@ -37,14 +37,14 @@
       </div>
 
       <%# TYPE NEW MESSAGE %>
-      <form action="#" class="bg-light">
+      <%= form_with url: message_path(params[:other_user_id]), method: :post, class: 'bg-light' do %>
         <div class="input-group">
-          <input type="text" placeholder="Type a message" aria-describedby="button-addon2" class="form-control rounded-0 border-0 py-4 bg-light">
+          <input type="text" name="message" placeholder="Type a message" aria-describedby="button-addon2" class="form-control rounded-0 border-0 py-4 bg-light" autocomplete="off">
           <div class="input-group-append">
             <button id="button-addon2" type="submit" class="btn btn-link"> <i class="fa fa-paper-plane"></i></button>
           </div>
         </div>
-      </form>
+      <% end %>
 
     </div>
   </div>

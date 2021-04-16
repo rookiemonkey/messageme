@@ -40,7 +40,7 @@ RSpec.describe 'Chatrooms', type: :request do
 
     it 'returns http success' do
       post message_path(other_user), params: params
-      expect(response).to have_http_status(:success)
+      expect(response).to redirect_to(chat_path(other_user))
     end
 
     it 'creates a new instance of conversation' do
