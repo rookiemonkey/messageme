@@ -14,15 +14,16 @@ class ChatroomController < ApplicationController
 
   def message
     existing_conversation = current_user.existing_conversation_with(params[:other_user_id])
+    message = nil
 
     if existing_conversation
-      existing_conversation.messages.create(body: params[:message], user: current_user)
+      message = existing_conversation.messages.create(body: params[:message], user: current_user)
     else
       new_conversation = Conversation.create(user_one_id: current_user.id, user_two_id: params[:other_user_id])
-      new_conversation.messages.create(body: params[:message], user: current_user)
+      message = new_conversation.messages.create(body: params[:message], user: current_user)
     end
 
-    redirect_to chat_path(params[:other_user_id])
+    ActionCable.server.broadcast("chatroom_#{existing_conversation.id}", message: JSON.parse(message.to_json))
   end
 
   private
@@ -32,6 +33,6 @@ class ChatroomController < ApplicationController
   end
 
   def set_conversations
-    @conversations = @raw_conversations.map { |conversation| conversation.who_talks_to(current_user) }
+    @conversations = @raw_conversations.map { |conversation| { other_user: conversation.who_talks_to(current_user), conversation_id: conversation.id } }
   end
 end

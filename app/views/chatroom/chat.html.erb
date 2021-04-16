@@ -13,7 +13,7 @@
           <div class="list-group rounded-0">
 
             <% @conversations.each do |conversation| %>
-              <%= render 'components/conversation_inactive', conversation: conversation %>
+              <%= render 'components/conversation_inactive', conversation: conversation[:other_user], conversation_id: conversation[:conversation_id] %>
             <% end %>
 
           </div>
@@ -49,3 +49,5 @@
     </div>
   </div>
 </div>
+
+<%= javascript_pack_tag 'chat', 'data-turbolinks-track': 'reload' %>

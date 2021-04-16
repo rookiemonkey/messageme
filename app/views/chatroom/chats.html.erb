@@ -13,7 +13,7 @@
           <div class="list-group rounded-0">
 
             <% @conversations.each do |conversation| %>
-              <%= render 'components/conversation_inactive', conversation: conversation %>
+              <%= render 'components/conversation_inactive', conversation: conversation[:other_user], conversation_id: conversation[:conversation_id] %>
             <% end %>
 
           </div>
@@ -28,6 +28,16 @@
         <h2>Please select a conversation to view</h2>
 
       </div>
+
+      <%# TYPE NEW MESSAGE %>
+      <%= form_with method: :post, class: 'bg-light' do %>
+        <div class="input-group">
+          <input type="text" name="message" placeholder="Type a message" aria-describedby="button-addon2" class="form-control rounded-0 border-0 py-4 bg-light" autocomplete="off" disabled>
+          <div class="input-group-append">
+            <button id="button-addon2" type="submit" class="btn btn-link" disabled> <i class="fa fa-paper-plane"></i></button>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

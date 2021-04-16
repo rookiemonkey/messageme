@@ -35,24 +35,7 @@ RSpec.describe 'Chatrooms', type: :request do
     end
   end
 
-  describe 'POST /:other_user_id (new conversation)' do
-    let(:params) { { message: 'This is a new message' } }
-
-    it 'returns http success' do
-      post message_path(other_user), params: params
-      expect(response).to redirect_to(chat_path(other_user))
-    end
-
-    it 'creates a new instance of conversation' do
-      expect { post message_path(other_user), params: params }.to change { Conversation.all.length }.by(1)
-    end
-
-    it 'creates a new instance of message' do
-      expect { post message_path(other_user), params: params }.to change { Message.all.length }.by(1)
-    end
-  end
-
-  describe 'POST /:other_user_id (old conversation)' do
+  describe 'POST /:other_user_id (existing conversation)' do
     let(:params) { { message: 'This is a new message' } }
 
     before do
