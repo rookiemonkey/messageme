@@ -16,3 +16,5 @@ User.all.each do |user|
 
   end
 end
+
+2.times { |i| User.create(username: "Unknown #{i}", password: '987654321') }
