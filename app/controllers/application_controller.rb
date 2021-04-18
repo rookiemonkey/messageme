@@ -27,6 +27,14 @@ class ApplicationController < ActionController::Base
     redirect_to(path)
   end
 
+  def set_raw_conversations
+    @raw_conversations = Conversation.where(user_one: current_user).or(Conversation.where(user_two: current_user))
+  end
+
+  def set_conversations
+    @conversations = @raw_conversations.map { |conversation| { other_user: conversation.who_talks_to(current_user), conversation_id: conversation.id } }
+  end
+
   protected
 
   def respond_error(error)
