@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   def require_user
     return if logged_in?
 
-    flash[:error] = 'You must be logged in to perform that action'
+    flash[:alert] = 'You must be logged in to perform that action'
     redirect_to session_new_path
   end
 
@@ -29,6 +29,10 @@ class ApplicationController < ActionController::Base
   def respond_success(message, path)
     flash[:notice] = message
     redirect_to(path)
+  end
+
+  def redirect_if_logged_in
+    redirect_back(fallback_location: '/', alert: 'You are still logged in!') if self.logged_in?
   end
 
   def set_raw_conversations

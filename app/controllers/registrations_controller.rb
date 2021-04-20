@@ -1,4 +1,6 @@
 class RegistrationsController < ApplicationController
+  before_action :redirect_if_logged_in
+
   def new; end
 
   def create
