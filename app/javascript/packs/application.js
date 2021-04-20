@@ -13,3 +13,8 @@ Turbolinks.start()
 ActiveStorage.start()
 
 window.toastr = toastr
+
+window.scrollToBottom = element => {
+  let scrollHeight = Math.max(element.scrollHeight, element.clientHeight)
+  element.scrollTop = scrollHeight - element.clientHeight;
+}

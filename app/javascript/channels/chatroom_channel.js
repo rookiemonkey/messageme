@@ -22,5 +22,7 @@ window.websocket_connection = consumer.subscriptions.create({
 
     if (user_id == otherUserId) new MessageReceiver(data.message).mount()
     if (user_id != otherUserId) new MessageSender(data.message).mount()
+
+    window.scrollToBottom(document.querySelector('.chat-box'))
   }
 });
