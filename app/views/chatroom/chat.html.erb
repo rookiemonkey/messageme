@@ -18,9 +18,9 @@
 
             <% @conversations.each do |conversation| %>
               <% if conversation[:conversation_id] == params[:conversation_id].to_i %>
-                <%= render 'components/conversation_active', conversation: conversation[:other_user], conversation_id: conversation[:conversation_id] %>
+                <%= render 'components/conversation_active', conversation: conversation[:other_user], conversation_id: conversation[:conversation_id], last_message:conversation[:last_message]  %>
               <% else %>
-                <%= render 'components/conversation_inactive', conversation: conversation[:other_user], conversation_id: conversation[:conversation_id] %>
+                <%= render 'components/conversation_inactive', conversation: conversation[:other_user], conversation_id: conversation[:conversation_id], last_message:conversation[:last_message] %>
               <% end %>
             <% end %>
 

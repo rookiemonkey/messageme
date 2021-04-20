@@ -6,12 +6,12 @@
         <h6 class="mb-0">
           <%= conversation.username %>
         </h6>
-        <small class="small font-weight-bold">
+        <small class="small font-weight-bold" data-updatedat="<%= conversation.id %>">
           <%= format_date(conversation.updated_at) %>
         </small>
       </div>
-      <p class="font-italic mb-0 text-small text-white">
-        This should be the last message of the conversation. Which needs to be figured out as well
+      <p class="font-italic mb-0 text-small text-white" data-message="<%= conversation.id %>">
+        <%= last_message %>
       </p>
     </div>
   </div>

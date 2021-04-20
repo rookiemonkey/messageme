@@ -29,6 +29,9 @@ class ChatroomController < ApplicationController
       message = new_conversation.messages.create(body: params[:message], user: current_user)
     end
 
-    ActionCable.server.broadcast("chatroom_#{existing_conversation.id}", message: JSON.parse(message.to_json))
+    existing_conversation.updated_at = message.created_at
+    existing_conversation.save
+
+    ActionCable.server.broadcast("chatroom_#{existing_conversation.id}", message: JSON.parse(message.to_json), updated_at: format_date(existing_conversation.updated_at))
   end
 end

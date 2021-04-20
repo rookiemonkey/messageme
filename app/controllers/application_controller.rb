@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  helper_method :current_user, :logged_in?
+  helper_method :current_user, :logged_in?, :format_date
   include Exceptions::ApplicationErrors
   rescue_from AccountError, with: :respond_error
 
@@ -18,6 +18,10 @@ class ApplicationController < ActionController::Base
     redirect_to session_new_path
   end
 
+  def format_date(date)
+    date.strftime('%a, %b %d %Y, at %I:%M %p')
+  end
+
   def account_params
     params.require(:user).permit(:username, :password)
   end
@@ -32,7 +36,11 @@ class ApplicationController < ActionController::Base
   end
 
   def set_conversations
-    @conversations = @raw_conversations.map { |conversation| { other_user: conversation.who_talks_to(current_user), conversation_id: conversation.id } }
+    @conversations = @raw_conversations.map { |conversation| { 
+      other_user: conversation.who_talks_to(current_user), 
+      conversation_id: conversation.id,
+      last_message: "#{conversation.messages.last.body[0..40]} ..."
+    } }
   end
 
   protected

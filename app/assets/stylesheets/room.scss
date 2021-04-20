@@ -21,6 +21,17 @@ body {
   border-radius: 1rem;
 }
 
+.chat-initial {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.chat-initial img {
+  width: 50%;
+}
+
 .text-small {
   font-size: 0.9rem;
 }
@@ -38,4 +49,8 @@ body {
 input::placeholder {
   font-size: 0.9rem;
   color: #999;
+}
+
+a.conversation-item:hover {
+  text-decoration: none !important;
 }

@@ -17,7 +17,7 @@
           <div class="list-group rounded-0">
 
             <% @conversations.each do |conversation| %>
-              <%= render 'components/conversation_inactive', conversation: conversation[:other_user], conversation_id: conversation[:conversation_id] %>
+              <%= render 'components/conversation_inactive', conversation: conversation[:other_user], conversation_id: conversation[:conversation_id], last_message:conversation[:last_message] %>
             <% end %>
 
           </div>
@@ -29,7 +29,11 @@
     <div class="col-7 px-0">
       <div class="px-4 py-5 chat-box bg-white">
 
-        <h2>Please select a conversation to view</h2>
+        <div class="chat-initial">
+          <%= image_tag asset_path('chat.svg') %>
+          <small>Please select a conversation</small>
+          <small>Click on <i class="fa fa-plus-circle"></i> search for a user</small>
+        </div>
 
       </div>
 
