@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+  @import 'toastr/build/toastr.min';
+
+ .home-header img {
+   width: 25%;
+ }
+
+ a:hover {
+   text-decoration: none;
+ }

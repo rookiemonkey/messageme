@@ -36,11 +36,14 @@ class ApplicationController < ActionController::Base
   end
 
   def set_conversations
-    @conversations = @raw_conversations.map { |conversation| { 
-      other_user: conversation.who_talks_to(current_user), 
-      conversation_id: conversation.id,
-      last_message: "#{conversation.messages.last.body[0..40]} ..."
-    } }
+    @conversations = @raw_conversations.map do |conversation|
+      last_message = conversation.messages.last
+      {
+        other_user: conversation.who_talks_to(current_user),
+        conversation_id: conversation.id,
+        last_message: last_message ? "#{last_message.body[0..40]} ..." : ''
+      }
+    end
   end
 
   protected

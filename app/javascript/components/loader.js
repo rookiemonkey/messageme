@@ -24,7 +24,7 @@ class Loader {
   }
 
   startLoader() { this.parent.appendChild(this.loader) }
-
+  
 }
 
 export default Loader
