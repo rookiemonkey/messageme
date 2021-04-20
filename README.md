@@ -4,8 +4,8 @@ A chat application written using Ruby and Ruby-on-Rails framework that utilizes 
 
 Consider checking the repo's issues, all of my todos are in there :smile:
 
-![Screenshot](.screenshots/screen1.jpg)
-![Screenshot](.screenshots/screen2.jpg)
+![Screenshot](screenshots/screen1.jpg)
+![Screenshot](screenshots/screen2.jpg)
 
 ## Author: <i>Kevin Roi R. Basina</i>
 <a href="https://github.com/rookiemonkey">
