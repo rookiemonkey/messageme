@@ -7,7 +7,7 @@ const parsedUrlParams = new URLSearchParams(rawUrlParams);
 const conversationId = parsedUrlParams.get('conversation_id')
 const otherUserId = window.location.pathname.slice(1)
 
-consumer.subscriptions.create({
+window.websocket_connection = consumer.subscriptions.create({
   channel: 'ChatroomChannel',
   conversation_id: conversationId
 }, {

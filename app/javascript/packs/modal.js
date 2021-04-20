@@ -34,7 +34,7 @@ class Modal {
 
   processData(data) {
     this.removeResults()
-    data.forEach(user => this.results.insertAdjacentHTML('beforeend', new SearchItem(user).render()))
+    data.forEach(user => this.results.insertAdjacentElement('beforeend', new SearchItem(user).render()))
   }
 
   startLoader() {
