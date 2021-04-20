@@ -1,4 +1,5 @@
 import SearchItem from '../components/searchItem';
+import SearchItemEmpty from '../components/searthItemEmpty';
 import Loader from '../components/loader';
 
 class Modal {
@@ -34,6 +35,7 @@ class Modal {
 
   processData(data) {
     this.removeResults()
+    if (!data.length) return this.results.innerHTML = new SearchItemEmpty().render()
     data.forEach(user => this.results.insertAdjacentElement('beforeend', new SearchItem(user).render()))
   }
 

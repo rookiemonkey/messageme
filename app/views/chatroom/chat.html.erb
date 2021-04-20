@@ -8,7 +8,7 @@
         <div class="bg-gray px-4 py-2 bg-light">
           <p class="h5 mb-0 py-1">Recent
             <button class="btn btn-link float-right" style="padding: 0" id="add_btn">
-              Add
+              <i class="fa fa-plus-circle"></i>
             </button>
           </p>
         </div>
@@ -17,7 +17,11 @@
           <div class="list-group rounded-0">
 
             <% @conversations.each do |conversation| %>
-              <%= render 'components/conversation_inactive', conversation: conversation[:other_user], conversation_id: conversation[:conversation_id] %>
+              <% if conversation[:conversation_id] == params[:conversation_id].to_i %>
+                <%= render 'components/conversation_active', conversation: conversation[:other_user], conversation_id: conversation[:conversation_id] %>
+              <% else %>
+                <%= render 'components/conversation_inactive', conversation: conversation[:other_user], conversation_id: conversation[:conversation_id] %>
+              <% end %>
             <% end %>
 
           </div>

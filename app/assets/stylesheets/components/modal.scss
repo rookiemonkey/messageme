@@ -45,3 +45,10 @@
 #loader svg {
   width: 150px;
 }
+
+.no-results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 22%;
+}
